@@ -80,4 +80,8 @@ namespace CompactEncDet {
   const char* Version(void);
 }      // End namespace CompactEncDet
 
+extern "C" {
+  const char* compact_enc_det_detect(const char* text, size_t text_length, size_t* name_len);
+}
+
 #endif  // COMPACT_ENC_DET_COMPACT_ENC_DET_H_

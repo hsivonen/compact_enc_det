@@ -5717,3 +5717,15 @@ Encoding CompactEncDet::TopEncodingOfCharsetHint(const char* name) {
 const char* CompactEncDet::Version(void) {
   return kVersion;
 }
+
+extern "C" {
+  const char* compact_enc_det_detect(const char* text, size_t text_length, size_t* name_len) {
+    int bytes_consumed;
+    bool is_reliable;
+    Encoding enc = CompactEncDet::DetectEncoding(text, text_length, NULL, NULL, NULL, UNKNOWN_ENCODING, UNKNOWN_LANGUAGE, CompactEncDet::TextCorpusType::WEB_CORPUS, false, &bytes_consumed, &is_reliable);
+    const char* name = MimeEncodingName(enc); 
+    *name_len = strlen(name);
+    return name;
+  }
+}
+

@@ -29,7 +29,7 @@ set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE INTERNAL "No dev warnings")
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wno-narrowing")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wno-narrowing -g")
 elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wno-c++11-narrowing")
 elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
@@ -70,7 +70,7 @@ set(CED_LIBRARY_SOURCES
 add_library(ced ${CED_LIBRARY_SOURCES})
 
 # Uncomment to put CED into WHATWG-compliant mode.
-#add_definitions(-DHTML5_MODE)
+add_definitions(-DHTML5_MODE)
 
 set(GTEST_INCLUDE_DIR "gtest/googletest/include")
 set(GTEST_LIB_DIR "${CMAKE_SOURCE_DIR}/gtest/lib")
